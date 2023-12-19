@@ -4,7 +4,7 @@ from torch.nn import ConstantPad1d
 from torch.utils.data import Dataset
 import torch.nn.functional as F
 
-SMILE = 3
+SMILE = 0
 DENSITY = 5
 CALORICITY = 6
 MELTING = 7
@@ -40,11 +40,11 @@ class Monecular(Dataset):
         padding = (0, 0, 0, self.max_length - len(char_list))
         feature = F.pad(feature, padding, value=-1)
 
-        density = (sample["DENSITY"] - 0.75) / 0.75
-        caloricity = (sample["CALORICITY"] - 25) / 25
-        melting = (sample["MELTING"] - 75) / 225
+        #density = (sample["DENSITY"] - 0.75) / 0.75
+        #caloricity = (sample["CALORICITY"] - 25) / 25
+        #melting = (sample["MELTING"] - 75) / 225
 
-        properties = torch.tensor([density, caloricity, melting]).float()
+        #properties = torch.tensor([density, caloricity, melting]).float()
         
-        return feature, properties
+        return feature
 
